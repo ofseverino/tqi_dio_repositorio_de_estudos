@@ -1,0 +1,27 @@
+body{
+    background-color:blueviolet;
+}
+#titulo{
+    color: brown;
+}
+.artigo{
+    border: whitesmoke;
+}
+
+.subtitulo{
+    font-size: 16px;
+    font-style: italic;
+}
+.TituloPostagem{
+    font-style: oblique;
+    padding: 10px;
+    border: 16px solid black;
+    margin: 20px;
+}
+.ImagemCabecalho{
+    padding: 20%;
+}
+.ImagemPostagem{
+    width: 100px;
+    height: 100px;
+}

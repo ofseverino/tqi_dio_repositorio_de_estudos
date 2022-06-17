@@ -1,0 +1,61 @@
+.{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    background-color: aqua;
+}
+.jogo_memoria{
+    height: 640px;
+    width: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+.carta{
+    
+    height:calc(33.333% - 10px);
+    width: calc(23.333% - 10px);
+    display:inline-table;
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(1, 1, 1, 0.3);
+    cursor: pointer;
+    transform: scale(1);
+    background-color: white;
+    transform-style: preserve-3d;/* evita o achatamento do elemento*/
+    transition: transform .9s;
+}
+.carta:active{
+    transform: scale(0.9);
+    transition:transform .3s;
+}
+.verso_carta{
+    height: 82%;
+    width: 80%;
+    margin: 10px;
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background: white;
+    backface-visibility: hidden;
+}
+.frente_carta{
+    height: 82%;
+    width: 80%;
+    margin: 10px;
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background: white;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+.carta.flip{
+    transform: rotateY(180deg);
+
+}

@@ -1,3 +1,4 @@
+
 package one.digitalinnovation.beerstock.controller;
 
 import one.digitalinnovation.beerstock.builder.BeerDTOBuilder;
@@ -32,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
-public class BeerControllerTest {
+public  class BeerControllerTest {
 
     private static final String BEER_API_URL_PATH = "/api/v1/beers";
     private static final long VALID_BEER_ID = 1L;
@@ -57,6 +58,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando POST é chamada então a cerveja é criada
     void whenPOSTIsCalledThenABeerIsCreated() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -75,6 +77,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando POST é chamada sem os campos requerido então um erro é retornado
     void whenPOSTIsCalledWithoutRequiredFieldThenAnErrorIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -88,6 +91,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando GET é chamado com nome valido então estatus ok é retornado
     void whenGETIsCalledWithValidNameThenOkStatusIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -105,6 +109,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando GET é chamada sem nome registrado então estatus não encontrado é retornado
     void whenGETIsCalledWithoutRegisteredNameThenNotFoundStatusIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -119,6 +124,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    //quando GETLISTWHITHBEER(obterListaComCerveja) é chamada então status ok é retornado
     void whenGETListWithBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -136,6 +142,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando GETLISTwHITOUTBEER (obterListaSemCerveja) é chamada então status ok é retornado
     void whenGETListWithoutBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -150,6 +157,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando DELETE é chamada com id valido então nenhum status de conteudo é retornado
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
         // given
         BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
@@ -164,6 +172,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando DELETE é chamada com id invalid então estatus não encontrado é retornado
     void whenDELETEIsCalledWithInvalidIdThenNotFoundStatusIsReturned() throws Exception {
         //when
         doThrow(BeerNotFoundException.class).when(beerService).deleteById(INVALID_BEER_ID);
@@ -175,6 +184,7 @@ public class BeerControllerTest {
     }
 
     @Test
+    // quando PATCH é chamada para incrementar desconto então estatus ok é retornado
     void whenPATCHIsCalledToIncrementDiscountThenOKstatusIsReturned() throws Exception {
         QuantityDTO quantityDTO = QuantityDTO.builder()
                 .quantity(10)
